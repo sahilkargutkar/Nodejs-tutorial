@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <title>PROFILE</title>
+  </head>
+  <body>
+    <h1>Welcome Mr <%=name%></h1>
+    <h2>Email: <%=data.email%></h2>
+    <h2>data: <%=data.address%></h2>
+    <ul>
+      skills: <%data.skills.forEach(function(item){%>
+      <li><%=item%></li>
+
+      <%})%>
+    </ul>
+  </body>
+</html>
