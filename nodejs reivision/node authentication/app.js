@@ -82,4 +82,30 @@ app.post("/login", jsonParser, async function (req, res) {
     });
 });
 
+app.get("/users", verifyToken, function (req, res) {
+  User.find().then((result) => {
+    res.status(200).json(result);
+  });
+});
+
+function verifyToken(req, res, next) {
+  const bearerHeader = req.headers["authorization"];
+
+  if (typeof bearerHeader !== "undefined") {
+    const bearer = bearerHeader.split(" ");
+    console.log(bearer[1]);
+    req.token = bearer[1];
+
+    jwt.verify(req.token, jwtKey, (err, data) => {
+      if (err) {
+        res.json({ result: err });
+      } else {
+        next();
+      }
+    });
+  } else {
+    res.send({ result: "Token is not provided" });
+  }
+}
+
 app.listen(3000);
