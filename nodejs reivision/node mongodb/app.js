@@ -5,13 +5,10 @@ const jsonParser = bodyParser.json();
 const mongoose = require("mongoose");
 const User = require("./models/users");
 
-mongoose.connect(
-  "mongodb+srv://sahil_sk:2BDHJ5D79CpChqw@cluster0.gfbru.mongodb.net/tutorial?retryWrites=true&w=majority",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-);
+mongoose.connect("mongodblink", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 app.get("/users", function (req, res) {
   User.find().then((data) => {

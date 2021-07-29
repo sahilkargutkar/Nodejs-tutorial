@@ -10,10 +10,7 @@ const jwt = require("jsonwebtoken");
 jwtKey = "jwt";
 
 mongoose
-  .connect(
-    "mongodb+srv://sahil_sk:2BDHJ5D79CpChqw@cluster0.gfbru.mongodb.net/auth?retryWrites=true&w=majority",
-    { useNewUrlParser: true, useUnifiedTopology: true }
-  )
+  .connect("mongodblink", { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.warn("connected");
   });
